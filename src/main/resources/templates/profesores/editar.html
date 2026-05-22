@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Editar Profesor</title></head>
+<body>
+<h1>Editar Profesor</h1>
+<form method="post" th:action="@{/web/profesores/editar/{id}(id=${profesor.id})}">
+    <label>Nombre: <input type="text" name="nombre" th:value="${profesor.nombre}"/></label><br/>
+    <label>Especialidad: <input type="text" name="especialidad" th:value="${profesor.especialidad}"/></label><br/>
+    <label>Años de experiencia: <input type="number" name="anosExperiencia" th:value="${profesor.anosExperiencia}"/></label><br/>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/web/profesores">Volver</a>
+</body>
+</html>

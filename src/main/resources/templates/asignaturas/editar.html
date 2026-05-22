@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Editar Asignatura</title></head>
+<body>
+<h1>Editar Asignatura</h1>
+<form method="post" th:action="@{/web/asignaturas/editar/{id}(id=${asignatura.id})}">
+    <label>Nombre: <input type="text" name="nombre" th:value="${asignatura.nombre}"/></label><br/>
+    <label>Curso: <input type="text" name="curso" th:value="${asignatura.curso}"/></label><br/>
+    <label>Horas semanales: <input type="number" name="horasSemanales" th:value="${asignatura.horasSemanales}"/></label><br/>
+    <label>Tipo: <select name="tipo">
+        <option value="teoria" th:selected="${asignatura.tipo == 'teoria'}">Teoría</option>
+        <option value="practica" th:selected="${asignatura.tipo == 'practica'}">Práctica</option>
+    </select></label><br/>
+    <label>Profesor:
+        <select name="profesorId">
+            <option th:each="p : ${profesores}" th:value="${p.id}" th:text="${p.nombre}"
+                    th:selected="${asignatura.profesor != null && asignatura.profesor.id == p.id}"></option>
+        </select>
+    </label><br/>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/web/asignaturas">Volver</a>
+</body>
+</html>

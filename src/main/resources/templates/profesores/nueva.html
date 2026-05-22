@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Nueva Profesor</title></head>
+<body>
+<h1>Nuevo Profesor</h1>
+<form method="post" action="/web/profesores/nueva">
+    <label>Nombre: <input type="text" name="nombre"/></label><br/>
+    <label>Especialidad: <input type="text" name="especialidad"/></label><br/>
+    <label>Años de experiencia: <input type="number" name="anosExperiencia"/></label><br/>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/web/profesores">Volver</a>
+</body>
+</html>

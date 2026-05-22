@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Nueva Asignatura</title></head>
+<body>
+<h1>Nueva Asignatura</h1>
+<form method="post" action="/web/asignaturas/nueva">
+    <label>Nombre: <input type="text" name="nombre"/></label><br/>
+    <label>Curso: <input type="text" name="curso"/></label><br/>
+    <label>Horas semanales: <input type="number" name="horasSemanales"/></label><br/>
+    <label>Tipo: <select name="tipo">
+        <option value="teoria">Teoría</option>
+        <option value="practica">Práctica</option>
+    </select></label><br/>
+    <label>Profesor:
+        <select name="profesorId">
+            <option th:each="p : ${profesores}" th:value="${p.id}" th:text="${p.nombre}"></option>
+        </select>
+    </label><br/>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/web/asignaturas">Volver</a>
+</body>
+</html>

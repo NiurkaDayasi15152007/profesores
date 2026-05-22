@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detalle Asignatura</title></head>
+<body>
+<h1>Detalle de Asignatura</h1>
+<p>Nombre: <span th:text="${asignatura.nombre}"></span></p>
+<p>Curso: <span th:text="${asignatura.curso}"></span></p>
+<p>Horas semanales: <span th:text="${asignatura.horasSemanales}"></span></p>
+<p>Tipo: <span th:text="${asignatura.tipo}"></span></p>
+<p>Profesor: <span th:text="${asignatura.profesor != null ? asignatura.profesor.nombre : 'Sin profesor'}"></span></p>
+<a href="/web/asignaturas">Volver</a>
+</body>
+</html>

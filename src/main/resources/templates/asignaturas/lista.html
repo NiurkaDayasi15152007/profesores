@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Asignaturas</title></head>
+<body>
+<h1>Asignaturas</h1>
+<form method="get" action="/web/asignaturas">
+    <input type="text" name="nombre" th:value="${nombre}" placeholder="Buscar por nombre"/>
+    <input type="text" name="curso" th:value="${curso}" placeholder="Buscar por curso"/>
+    <input type="text" name="tipo" th:value="${tipo}" placeholder="Buscar por tipo"/>
+    <button type="submit">Filtrar</button>
+</form>
+<a href="/web/asignaturas/nueva">Nueva asignatura</a>
+<table border="1">
+    <tr><th>ID</th><th>Nombre</th><th>Curso</th><th>Horas</th><th>Tipo</th><th>Profesor</th><th>Acciones</th></tr>
+    <tr th:each="a : ${asignaturas}">
+        <td th:text="${a.id}"></td>
+        <td th:text="${a.nombre}"></td>
+        <td th:text="${a.curso}"></td>
+        <td th:text="${a.horasSemanales}"></td>
+        <td th:text="${a.tipo}"></td>
+        <td th:text="${a.profesor != null ? a.profesor.nombre : 'Sin profesor'}"></td>
+        <td>
+            <a th:href="@{/web/asignaturas/{id}(id=${a.id})}">Ver</a>
+            <a th:href="@{/web/asignaturas/editar/{id}(id=${a.id})}">Editar</a>
+            <form th:action="@{/web/asignaturas/borrar/{id}(id=${a.id})}" method="post" style="display:inline">
+                <button type="submit">Borrar</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a href="/web/profesores">Ver Profesores</a>
+</body>
+</html>

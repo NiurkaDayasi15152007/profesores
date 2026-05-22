@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Profesores</title></head>
+<body>
+<h1>Lista de Profesores</h1>
+<a href="/web/profesores/nueva">+ Nuevo Profesor</a> |
+<a href="/web/asignaturas">Ver Asignaturas</a>
+<form method="get" action="/web/profesores">
+    <input type="text" name="nombre" placeholder="Buscar por nombre" th:value="${nombre}"/>
+    <input type="text" name="especialidad" placeholder="Buscar por especialidad" th:value="${especialidad}"/>
+    <button type="submit">Filtrar</button>
+    <a href="/web/profesores">Limpiar</a>
+</form>
+<table border="1">
+    <tr><th>ID</th><th>Nombre</th><th>Especialidad</th><th>Anos Experiencia</th><th>Acciones</th></tr>
+    <tr th:each="p : ${profesores}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.nombre}"></td>
+        <td th:text="${p.especialidad}"></td>
+        <td th:text="${p.anosExperiencia}"></td>
+        <td>
+            <a th:href="@{/web/profesores/{id}(id=${p.id})}">Ver</a>
+            <a th:href="@{/web/profesores/editar/{id}(id=${p.id})}">Editar</a>
+            <form method="post" th:action="@{/web/profesores/borrar/{id}(id=${p.id})}" style="display:inline">
+                <button type="submit">Borrar</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(profesores)}">
+        <td colspan="5">No se encontraron profesores.</td>
+    </tr>
+</table>
+</body>
+</html>

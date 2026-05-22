@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detalle Profesor</title></head>
+<body>
+<h1 th:text="${profesor.nombre}"></h1>
+<p>Especialidad: <span th:text="${profesor.especialidad}"></span></p>
+<p>Años de experiencia: <span th:text="${profesor.anosExperiencia}"></span></p>
+<p>Horas totales semanales: <span th:text="${horasTotales}"></span></p>
+<h2>Asignaturas</h2>
+<table border="1">
+    <tr><th>Nombre</th><th>Curso</th><th>Horas</th><th>Tipo</th></tr>
+    <tr th:each="a : ${asignaturas}">
+        <td th:text="${a.nombre}"></td>
+        <td th:text="${a.curso}"></td>
+        <td th:text="${a.horasSemanales}"></td>
+        <td th:text="${a.tipo}"></td>
+    </tr>
+</table>
+<a href="/web/profesores">Volver</a>
+</body>
+</html>
